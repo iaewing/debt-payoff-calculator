@@ -1,40 +1,51 @@
 <template>
-  <NavBar />
-  <div class="grid grid-cols-3 gap-x-5">
-    <Card class="bg-purple-500 text-white p-4">
-    <template v-slot:default>
-      $45,000.00
-    </template>
-    <template v-slot:header>
-      <div>Principal Paid</div>
-    </template>
-    <template v-slot:subtext>
-      Wow im broke
-    </template>
-  </Card>
-    <Card class="bg-yellow-600 text-white p-4">
-      <template v-slot:default>
-        $45,000.00
-      </template>
-      <template v-slot:header>
-        <div>Principal Paid</div>
-      </template>
-      <template v-slot:subtext>
-        Wow im broke
-      </template>
-    </Card>
-    <Card class="bg-red-500 text-white p-4">
-      <template v-slot:default>
-        $45,000.00
-      </template>
-      <template v-slot:header>
-        <div>Principal Paid</div>
-      </template>
-      <template v-slot:subtext>
-        Wow im broke
-      </template>
-    </Card>
-  </div>
+  <NavBar/>
+    <div class="grid grid-cols-4 gap-x-5 max-w-3xl">
+      <Card class="bg-purple-500 text-white p-4">
+        <template v-slot:default>
+          $45,000.00
+        </template>
+        <template v-slot:header>
+          <div>Principal Paid</div>
+        </template>
+        <template v-slot:subtext>
+          Wow im broke
+        </template>
+      </Card>
+      <Card class="bg-yellow-600 text-white p-4">
+        <template v-slot:default>
+          600 Years
+        </template>
+        <template v-slot:header>
+          <div>Paid Off</div>
+        </template>
+        <template v-slot:subtext>
+          That's a long time...
+        </template>
+      </Card>
+      <Card class="bg-red-500 text-white p-4">
+        <template v-slot:default>
+          1.5%
+        </template>
+        <template v-slot:header>
+          <div>Interest Paid</div>
+        </template>
+        <template v-slot:subtext>
+          RIP
+        </template>
+      </Card>
+      <Card class="bg-yellow-300 text-white p-4">
+        <template v-slot:default>
+          1.5%
+        </template>
+        <template v-slot:header>
+          <div>Average Interest Rate</div>
+        </template>
+        <template v-slot:subtext>
+          Your average interest rate across all loans
+        </template>
+      </Card>
+    </div>
 </template>
 
 <script>
