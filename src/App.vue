@@ -15,7 +15,7 @@
           Wow im broke
         </template>
       </Card>
-      <Card class="bg-yellow-600 text-white p-4">
+      <Card class="bg-green-400 text-white p-4">
         <template v-slot:default>
           600 Years
         </template>
@@ -37,7 +37,7 @@
           RIP
         </template>
       </Card>
-      <Card class="bg-yellow-300 text-white p-4">
+      <Card class="bg-yellow-400 text-white p-4">
         <template v-slot:default>
           1.5%
         </template>
