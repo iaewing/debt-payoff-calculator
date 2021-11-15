@@ -1,5 +1,8 @@
 <template>
   <NavBar/>
+  <div class="grid grid-cols-2">
+    <div>
+    </div>
     <div class="grid grid-cols-4 gap-x-5 max-w-3xl">
       <Card class="bg-purple-500 text-white p-4">
         <template v-slot:default>
@@ -46,6 +49,7 @@
         </template>
       </Card>
     </div>
+  </div>
 </template>
 
 <script>
