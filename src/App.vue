@@ -4,7 +4,7 @@
     <div>
     </div>
     <div class="grid grid-cols-4 gap-x-5 max-w-3xl">
-      <Card class="bg-purple-500 text-white p-4">
+      <Card class="bg-purple-600 text-white p-4">
         <template v-slot:default>
           $45,000.00
         </template>
