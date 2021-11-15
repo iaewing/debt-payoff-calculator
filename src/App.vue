@@ -1,6 +1,6 @@
 <template>
   <NavBar />
-  <div class="grid grid-cols-3">
+  <div class="grid grid-cols-3 gap-x-5">
     <Card class="bg-purple-500 text-white p-4">
     <template v-slot:default>
       $45,000.00
