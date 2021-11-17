@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col max-w-2xl ">
+  <div class="flex flex-col max-w-2xl">
     <div class="text-lg">
       <slot name="header" />
     </div>
