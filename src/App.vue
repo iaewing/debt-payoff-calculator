@@ -2,7 +2,7 @@
   <NavBar/>
   <div class="grid grid-cols-5 grid-rows-5 gap-x-4 p-8">
     <PaymentPlan />
-
+    <MyLoans />
     <!--Start of column two-->
     <div class="col-span-4 row-span-1">
       <div class="grid grid-cols-4 gap-4">
@@ -60,10 +60,12 @@
 import NavBar from './components/NavBar.vue'
 import Card from './components/Card.vue'
 import PaymentPlan from './components/PaymentPlan.vue'
+import MyLoans from "./components/MyLoans";
 
 export default {
   name: 'App',
   components: {
+    MyLoans,
     NavBar,
     Card,
     PaymentPlan
