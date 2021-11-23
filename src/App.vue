@@ -1,8 +1,10 @@
 <template>
   <NavBar/>
   <div class="grid grid-cols-5 grid-rows-5 gap-x-4 p-8">
-    <PaymentPlan />
-    <MyLoans />
+    <div>
+      <PaymentPlan/>
+      <MyLoans/>
+    </div>
     <!--Start of column two-->
     <div class="col-span-4 row-span-1">
       <div class="grid grid-cols-4 gap-4">
@@ -70,7 +72,7 @@ export default {
     Card,
     PaymentPlan
   },
-  data () {
+  data() {
     return {
       monthlyPayment: 409,
     }
