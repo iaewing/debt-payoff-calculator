@@ -2,8 +2,8 @@
   <NavBar/>
   <div class="grid grid-cols-5 grid-rows-5 gap-x-4 p-8">
     <div>
-      <PaymentPlan/>
-      <MyLoans/>
+      <PaymentPlan />
+      <MyLoans :loan="loan" />
     </div>
     <!--Start of column two-->
     <div class="col-span-4 row-span-1">
@@ -64,6 +64,13 @@ import Card from './components/Card.vue'
 import PaymentPlan from './components/PaymentPlan.vue'
 import MyLoans from "./components/MyLoans";
 
+const loan = {
+  name: 'OSAP',
+  amountOwing: 15000,
+  interestRate: 1.5,
+  monthlyPayment: 250,
+};
+
 export default {
   name: 'App',
   components: {
@@ -73,10 +80,8 @@ export default {
     PaymentPlan
   },
   data() {
-    return {
-      monthlyPayment: 409,
-    }
-  }
+    return { loan }
+  },
 }
 </script>
 
