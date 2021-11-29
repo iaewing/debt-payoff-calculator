@@ -21,7 +21,7 @@
       <div class="pt-4 mt-4 border-t border-black">
         <h3>Monthly Payment</h3>
         <p v-text="'$' + monthlyPayment" class="text-green-600 text-xl"></p>
-        <input v-model="monthlyPayment" type="range" min="1" max="1000" class="appearance-none h-1 bg-blue-500 border-red-500 w-full"/>
+        <input value="monthlyPayment" @change="$emit('changeMonthlyPayment', Number($event.target.value))" type="range" min="1" max="1000" class="appearance-none h-1 bg-blue-500 border-red-500 w-full"/>
       </div>
     </div>
   </div>
@@ -33,9 +33,15 @@ export default {
   data() {
     return {
       paymentType: '',
-      monthlyPayment: 100,
+
     }
-  }
+  },
+  props: {
+    monthlyPayment: {
+      type: Number,
+      default: 1
+    } ,
+  },
 }
 </script>
 

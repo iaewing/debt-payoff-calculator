@@ -2,7 +2,7 @@
   <NavBar/>
   <div class="grid grid-cols-5 grid-rows-5 gap-x-4 p-8">
     <div>
-      <PaymentPlan />
+      <PaymentPlan :monthly-payment="loan.monthlyPayment" @changeMonthlyPayment="updateMonthlyPayment" />
       <MyLoans :loan="loan" />
     </div>
     <!--Start of column two-->
@@ -10,18 +10,22 @@
       <div class="grid grid-cols-4 gap-4">
         <Card class="bg-purple-600 text-white p-4 ">
           <template v-slot:default>
-            $45,000.00
+            ${{ loan.amountOwing }}
           </template>
           <template v-slot:header>
             <div>Principal Paid</div>
           </template>
-          <template v-slot:subtext>
+          <template v-slot:subtext v-if="loan.amountOwing>=20000">
             Wow im broke
           </template>
+          <template v-slot:subtext v-else>
+            you can do it
+          </template>
+
         </Card>
         <Card class="bg-green-400 text-white p-4">
           <template v-slot:default>
-            600 Years
+            {{ paidOffDate }} month(s)
           </template>
           <template v-slot:header>
             <div>Paid Off</div>
@@ -32,7 +36,7 @@
         </Card>
         <Card class="bg-red-500 text-white p-4">
           <template v-slot:default>
-            1.5%
+            ${{ interestPaid }}
           </template>
           <template v-slot:header>
             <div>Interest Paid</div>
@@ -43,7 +47,7 @@
         </Card>
         <Card class="bg-yellow-400 text-white p-4">
           <template v-slot:default>
-            1.5%
+            {{ interestRate }}%
           </template>
           <template v-slot:header>
             <div>Average Interest Rate</div>
@@ -80,8 +84,27 @@ export default {
     PaymentPlan
   },
   data() {
-    return { loan }
+    return {
+      loan
+    }
   },
+  computed: {
+    paidOffDate() {
+      return Math.floor((this.loan.amountOwing + this.interestPaid) / this.loan.monthlyPayment);
+    },
+    interestPaid() {
+      return this.loan.amountOwing * (this.interestRate / 100);
+    },
+    interestRate() {
+      return this.loan.interestRate;
+    },
+
+  },
+  methods: {
+    updateMonthlyPayment(paymentAmount) {
+      this.loan.monthlyPayment = paymentAmount;
+    }
+  }
 }
 </script>
 
