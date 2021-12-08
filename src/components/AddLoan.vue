@@ -2,18 +2,16 @@
   <div class="bg-white rounded shadow-lg overflow-hidden w-1/2">
     <header class="p-4 bg-blue-500 text-white text-2xl">Add Loan</header>
     <div class="grid gap-y-4 px-4 py-8">
-<!--      extract these to their own component-->
-      <input class="border-0 border-b border-gray-500 pl-0" type="text" placeholder="Loan Name">
-      <input class="border-0 border-b border-gray-500 pl-0" type="text" placeholder="Principal Remaining ($)">
-      <input class="border-0 border-b border-gray-500 pl-0" type="text" placeholder="Interest (%)">
-      <input class="border-0 border-b border-gray-500 pl-0" type="text" placeholder="Monthly Minimum Payment ($)">
+      <text-input v-model="loanName" id="loan-name" placeholder="Loan Name" error=""/>
+      <text-input v-model="principalRemaining" id="principal-remaining" placeholder="Principal Remaining" error=""/>
+      <text-input v-model="interest" id="interest" placeholder="Interest (%)" error=""/>
+      <text-input v-model="minimumPayment" id="min-payment" placeholder="Minimum Payment ($)" error=""/>
     </div>
     <footer class="flex justify-end p-4">
       <button class="font-semibold px-4 py-2" @click="$emit('closed')">
         CANCEL
       </button>
-<!--      //TODO: Add some kind of check to ensure text fields are filled, toggle formIncomplete-->
-      <button class="font-semibold px-6 py-2" :disabled="formIncomplete" :class="formIncomplete ? 'bg-gray-200' : 'bg-blue-500'">
+      <button class="font-semibold px-6 py-2" :disabled="!formComplete" :class="formComplete ? 'bg-blue-500' : 'bg-gray-200'">
         SAVE
       </button>
     </footer>
@@ -21,13 +19,26 @@
 </template>
 
 <script>
+import TextInput from "@/components/TextInput";
+
 export default {
   name: "Modal",
-  data(){
+  components: {TextInput},
+  data() {
     return {
-      formIncomplete: true //make this computed, contributed to by the 4 inputs
+      loanName: '',
+      principalRemaining: '',
+      interest: '',
+      minimumPayment: '',
+      errors: []
     }
-  }
+  },
+  computed: {
+    formComplete() {
+      return this.loanName && this.principalRemaining && this.interest && this.minimumPayment;
+    }
+  },
+  //TODO: Add validation for inputs
 }
 </script>
 
