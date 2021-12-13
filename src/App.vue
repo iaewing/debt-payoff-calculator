@@ -68,6 +68,9 @@ import Card from './components/Card.vue'
 import PaymentPlan from './components/PaymentPlan.vue'
 import MyLoans from "./components/MyLoans";
 
+//Array of loan objects perhaps?
+//Somewhere in here we would handle the event emitted by AddLoan
+//If an array of loans, append to the array in an event handler here
 const loan = {
   name: 'OSAP',
   amountOwing: 15000,

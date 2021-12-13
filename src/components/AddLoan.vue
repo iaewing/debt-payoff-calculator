@@ -3,7 +3,7 @@
     <header class="p-4 bg-blue-500 text-white text-2xl">Add Loan</header>
     <div class="grid gap-y-4 px-4 py-8">
       <text-input v-model="loanName" id="loan-name" placeholder="Loan Name" error=""/>
-      <text-input v-model="principalRemaining" id="principal-remaining" placeholder="Principal Remaining" error=""/>
+      <text-input v-model="principalRemaining" id="principal-remaining" placeholder="Principal Remaining ($)" error=""/>
       <text-input v-model="interest" id="interest" placeholder="Interest (%)" error=""/>
       <text-input v-model="minimumPayment" id="min-payment" placeholder="Minimum Payment ($)" error=""/>
     </div>
@@ -39,6 +39,7 @@ export default {
     }
   },
   //TODO: Add validation for inputs
+  //Emit an event with the new loan?
 }
 </script>
 
