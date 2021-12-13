@@ -12,7 +12,7 @@
     <p>{{ loan.amountOwing }}</p>
     <teleport to="body">
       <div v-if="isModalOpen" class="bg-gray-700 bg-opacity-75 fixed top-0 left-0 w-screen h-screen z-10 flex items-center justify-center">
-        <AddLoan @closed="closeModal" />
+        <AddLoan @closed="closeModal" @addLoan="$emit('addLoan', $event)"/>
       </div>
     </teleport>
   </div>

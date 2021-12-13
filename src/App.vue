@@ -2,20 +2,20 @@
   <NavBar/>
   <div class="grid grid-cols-5 grid-rows-5 gap-x-4 p-8">
     <div>
-      <PaymentPlan :monthly-payment="loan.monthlyPayment" @changeMonthlyPayment="updateMonthlyPayment" />
-      <MyLoans :loan="loan" />
+      <PaymentPlan :monthly-payment="loans[0].monthlyPayment" @changeMonthlyPayment="updateMonthlyPayment" />
+      <MyLoans @addLoan="registerLoan" :loan="loans[0]" />
     </div>
     <!--Start of column two-->
     <div class="col-span-4 row-span-1">
       <div class="grid grid-cols-4 gap-4">
         <Card class="bg-purple-600 text-white p-4 ">
           <template v-slot:default>
-            ${{ loan.amountOwing }}
+            ${{ loans[0].amountOwing }}
           </template>
           <template v-slot:header>
             <div>Principal Paid</div>
           </template>
-          <template v-slot:subtext v-if="loan.amountOwing>=20000">
+          <template v-slot:subtext v-if="loans[0].amountOwing>=20000">
             Wow im broke
           </template>
           <template v-slot:subtext v-else>
@@ -68,15 +68,13 @@ import Card from './components/Card.vue'
 import PaymentPlan from './components/PaymentPlan.vue'
 import MyLoans from "./components/MyLoans";
 
-//Array of loan objects perhaps?
-//Somewhere in here we would handle the event emitted by AddLoan
-//If an array of loans, append to the array in an event handler here
-const loan = {
+//TODO: Fix it. (Migrate to a array of loans vs single loan object)
+const loans = [{
   name: 'OSAP',
   amountOwing: 15000,
   interestRate: 1.5,
   monthlyPayment: 250,
-};
+}];
 
 export default {
   name: 'App',
@@ -88,7 +86,7 @@ export default {
   },
   data() {
     return {
-      loan
+      loans
     }
   },
   computed: {
@@ -101,11 +99,13 @@ export default {
     interestRate() {
       return this.loan.interestRate;
     },
-
   },
   methods: {
     updateMonthlyPayment(paymentAmount) {
       this.loan.monthlyPayment = paymentAmount;
+    },
+    registerLoan() {
+
     }
   }
 }
