@@ -20,8 +20,8 @@
       </div>
       <div class="pt-4 mt-4 border-t border-black">
         <h3>Monthly Payment</h3>
-        <p v-text="'$' + monthlyPayment" class="text-green-600 text-xl"></p>
-        <input value="monthlyPayment" @change="$emit('changeMonthlyPayment', Number($event.target.value))" type="range" min="1" max="1000" class="appearance-none h-1 bg-blue-500 border-red-500 w-full"/>
+        <p v-text="'$' + modelValue" class="text-green-600 text-xl"></p>
+        <input value="monthlyPayment" @input="$emit('update:modelValue', Number($event.target.value))" type="range" :min=minimumMonthlyPayment max="10000" class="appearance-none h-1 bg-blue-500 border-red-500 w-full"/>
       </div>
     </div>
   </div>
@@ -37,11 +37,24 @@ export default {
     }
   },
   props: {
-    monthlyPayment: {
+    loans: {
+      type: Array,
+      default: () => [],
+    },
+    modelValue: {
       type: Number,
-      default: 1
-    } ,
+    }
   },
+  computed: {
+    minimumMonthlyPayment() {
+      return this.loans.reduce((total, loan) => {
+        return total += loan.monthlyPayment;
+      }, 0)
+    }
+  },
+  mounted() {
+    this.$emit('update:modelValue', this.minimumMonthlyPayment);
+  }
 }
 </script>
 

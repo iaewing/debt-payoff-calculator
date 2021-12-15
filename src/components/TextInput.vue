@@ -1,6 +1,7 @@
 <template>
   <label :for="$attrs.id">{{ $attrs.placeholder }}</label>
   <input
+      :type="type"
       v-bind="$attrs"
       @input="$emit('update:modelValue', $event.target.value)"
       class="border-0 border-b border-gray-500 pl-0"
@@ -10,7 +11,7 @@
 
 <script>
 export default {
-  name: "ewing-input",
+  name: "text-input",
   inheritAttrs: false,
   props: {
     modelValue: {
@@ -20,6 +21,10 @@ export default {
     error: {
       type: String,
       default: ""
+    },
+    type: {
+      type: String,
+      required: true,
     }
   },
   emits: ['update:modelValue']
