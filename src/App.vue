@@ -10,18 +10,17 @@
       <div class="grid grid-cols-4 gap-4">
         <Card class="bg-purple-600 text-white p-4 ">
           <template v-slot:default>
-            ${{ loans[0].amountOwing }}
+            ${{ totalPrincipalOwed }}
           </template>
           <template v-slot:header>
             <div>Principal Paid</div>
           </template>
-          <template v-slot:subtext v-if="loans[0].amountOwing>=20000">
+          <template v-slot:subtext v-if="totalPrincipalOwed>=20000">
             Wow im broke
           </template>
           <template v-slot:subtext v-else>
             you can do it
           </template>
-
         </Card>
         <Card class="bg-green-400 text-white p-4">
           <template v-slot:default>
@@ -90,14 +89,23 @@ export default {
     }
   },
   computed: {
+    totalPrincipalOwed() {
+      //iterate over each loan and tally the amountOwing
+      return 2;
+    },
     paidOffDate() {
-      return Math.floor((this.loan.amountOwing + this.interestPaid) / this.loan.monthlyPayment);
+      // return Math.floor((this.loan.amountOwing + this.interestPaid) / this.loan.monthlyPayment);
+      return 50;
     },
     interestPaid() {
-      return this.loan.amountOwing * (this.interestRate / 100);
+      // return this.loan.amountOwing * (this.interestRate / 100);
+      return 100;
     },
     interestRate() {
-      return this.loan.interestRate;
+      //This would be an average of each loan's interest rate
+      return 1.5;
+
+      // return this.loan.interestRate;
     },
   },
   methods: {
